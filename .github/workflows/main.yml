@@ -22,7 +22,7 @@ jobs:
           git config --global user.email 370966584@qq.com
           git config --global user.name 370966584
           git status
-          git remote add origin https://${{secrets.commit_secret}}@github.com/xxx/yyy.git
+          git remote add origin https://${{secrets.commit_secret}}@github.com/370966584/flublog.git
           git checkout -b gh-pages
           git add --all
           git commit -m "update"
