@@ -29,37 +29,68 @@ class _MyHomePageState extends State<MyHomePage> {
             snap: false,
             backgroundColor: Colors.black,
             flexibleSpace: FlexibleSpaceBar(
-              background: Stack(
-                children: [
-                  
-                  SnowflakePage(),
-                ],
+              title: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text('主页'),
+                    Text('分类'),
+                    Text('关于'),
+                    Text('Github'),
+                  ],
+                ),
               ),
+              centerTitle: true,
+              background: SnowflakePage(),
             ),
             actions: [
-              Text('主页'),
-              Text('分类'),
+              
             ],
           ),
-         SliverFixedExtentList(
+         
+          SliverFixedExtentList(
            delegate: SliverChildBuilderDelegate((b,index){
-             return Container(
-              //  color: Colors.red,
-               margin: EdgeInsets.symmetric(vertical: 5,horizontal: MediaQuery.of(context).size.width/8),
-               child: Row(
-                 children: [
-                   Icon(Icons.favorite,color:Colors.red.shade300),
-                   Expanded(child: SizedBox.shrink()),
-                   Icon(Icons.favorite,color:Colors.red.shade300),
-                 ],
-               ),
-             );
+             return Item();
            },childCount: 20), 
-           itemExtent: 50
+           itemExtent: 80
           ),
        ],
      ),
        // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+
+
+class Item extends StatefulWidget {
+  @override
+  _ItemState createState() => _ItemState();
+}
+
+class _ItemState extends State<Item> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+    //  color: Colors.red,
+      margin: EdgeInsets.symmetric(vertical: 5,horizontal: MediaQuery.of(context).size.width/8),
+      child:Row(
+        children: [
+          // Icon(Icons.favorite),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(3)
+              ),
+              child: Text('哈哈'*60,maxLines: 3,overflow: TextOverflow.ellipsis,),
+            ),
+          ),
+          // Icon(Icons.favorite),
+        ],
+      ),
     );
   }
 }
